@@ -18,8 +18,13 @@
       "browser": true,
       "es6": true
     },
+    "parserOptions": {
+      "sourceType": "module"
+    },
     "rules": {
-      "max-len": "off"
+      "max-len": "off",
+      "require-jsdoc": "off",
+      "object-curly-spacing": "off"
     }
   },
   "stylelint": {
