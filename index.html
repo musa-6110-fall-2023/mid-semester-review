@@ -1,11 +1,17 @@
 <html>
   <head>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <main>
-
+      <div class="left-side">
+        <input type="text" id="station-name-filter" placeholder="Search by station name...">
+      </div>
+      <div id="map" class="map"></div>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
