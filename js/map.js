@@ -10,9 +10,22 @@ function initializeMap(stationInfo) {
     accessToken: 'pk.eyJ1IjoibWp1bWJlLXRlc3QiLCJhIjoiY2wwb3BudmZ3MWdyMjNkbzM1c2NrMGQwbSJ9.2ATDPobUwpa7Ou5jsJOGYA',
   }).addTo(map);
 
+  const stationsLayer = L.layerGroup();
+  stationsLayer.addTo(map);
+
+  const stationIcon = L.icon({
+    iconUrl: 'images/station-marker.png',
+    iconSize: [22, 31.5],
+    iconAnchor: [11, 31.5],
+    popupAnchor: [0, -35],
+  });
+
   for (const station of stationInfo.data.stations) {
-    const marker = L.marker([station.lat, station.lon]);
-    marker.addTo(map);
+    const marker = L.marker([station.lat, station.lon], {
+      alt: station.name,
+      icon: stationIcon,
+    });
+    marker.addTo(stationsLayer);
   }
 
   return map;
