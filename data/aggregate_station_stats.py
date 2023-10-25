@@ -58,6 +58,11 @@ num_days = (max_date.date() - min_date.date()).days
 for station in stations_info:
     for hour in range(24):
         stations_info[station][hour]['pickups'] /= num_days
-        stations_info[station][hour]['dropoffs'] /= num_days
+        stations_info[station][hour]['pickups'] = round(
+            stations_info[station][hour]['pickups'], 2)
 
-print(json.dumps(stations_info, indent=1))
+        stations_info[station][hour]['dropoffs'] /= num_days
+        stations_info[station][hour]['dropoffs'] = round(
+            stations_info[station][hour]['dropoffs'], 2)
+
+print(json.dumps(stations_info, indent=0))
