@@ -20,6 +20,16 @@ function initializeMap(stationInfo, events) {
     updateMapStations(filteredStations, stationsLayer);
   });
 
+  events.addEventListener('focus-station', (evt) => {
+    const stationId = evt.detail.stationId;
+    stationsLayer.eachLayer((layer) => {
+      if (layer.stationId === stationId) {
+        layer.bindPopup('hello');
+        layer.openPopup();
+      }
+    });
+  });
+
   return map;
 }
 
@@ -44,6 +54,7 @@ function updateMapStations(stations, stationsLayer) {
       <h2 class="station-name">${station.name}</h2>
       <p class="station-address">${station.address}</p>
     `);
+    marker.stationId = station.station_id;
     marker.addTo(stationsLayer);
   }
 }
