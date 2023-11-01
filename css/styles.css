@@ -14,3 +14,13 @@ main {
   flex-direction: row;
   width: 100%;
 }
+
+@media screen and (max-width: 425px) {
+  main {
+    flex-direction: column-reverse;
+  }
+
+  .map {
+    height: 50vh;
+  }
+}
