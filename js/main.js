@@ -7,6 +7,23 @@ const stationInfo = await stationInfoResp.json();
 
 const events = new EventTarget();
 
-initializeMap(stationInfo, events);
+const map = initializeMap(stationInfo, events);
 initializeList(stationInfo, events);
 initializeSearch(stationInfo, events);
+
+function handleGeolocationSuccess(pos) {
+  console.log(pos);
+
+  const newEvent = new CustomEvent('geolocated', { detail: pos });
+  events.dispatchEvent(newEvent);
+}
+
+function handleGeolocationError(err) {
+  console.log(err);
+}
+
+navigator.geolocation.getCurrentPosition(
+  handleGeolocationSuccess,
+  handleGeolocationError);
+
+window.map = map;

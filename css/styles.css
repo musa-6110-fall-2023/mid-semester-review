@@ -15,12 +15,17 @@ main {
   width: 100%;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (width <= 425px) {
   main {
     flex-direction: column-reverse;
   }
 
   .map {
     height: 50vh;
+  }
+
+  #station-name-filter {
+    padding: 0.5rem;
+    width: 100%;
   }
 }
